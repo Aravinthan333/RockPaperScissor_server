@@ -11,7 +11,12 @@ const pool = new Pool({
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://main.d2lvc08to0alcp.amplifyapp.com/"],
+    credentials: true,
+  })
+);
 
 const createTables = async () => {
   await pool.query(
